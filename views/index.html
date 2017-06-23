@@ -17,9 +17,11 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
           {% for hotel in Hotels %}
             <li> <a value="{{hotel.name}}">{{hotel.name}} </a></li>
           {% endfor %}
+
           </ul>
         </div>
 
