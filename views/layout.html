@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+  <title>Trip Planner - {% block title %}{% endblock %}</title>
+  <head>
+    <!-- Stylesheets go here! -->
+    <link rel="stylesheet" type="text/js" href="/bootstrap/js/bootstrap.min.js">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/js" href="/jquery/jquery.min.js">
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top clearfix" role="navigation">
+      <div class="container clearfix">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/" id="nav-header">Trip Planner! </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div>
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="/contact">Contact</a></li> !-->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+    <div class='container clearfix'>
+    {% block content %}
+    {% endblock %}
+    </div>
+
+    <!-- Script tags go here! -->
+
+  </body>
+</html>

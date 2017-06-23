@@ -1,25 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Trip Planner</title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-</head>
-<body>
-  <h1>Welcome!</h1>
-  <select>
-  {% for hotel in Hotels %}
-  	<option value="{{hotel.name}}">{{hotel.name}}</option>
-   {% endfor %}
-  </select>
-  <select>
-  {% for restaurants in Restaurants %}
-  	<option value="{{restaurants.name}}">{{restaurants.name}}</option>
-   {% endfor %}
-  </select>
-  <select>
-  {% for activities in Activities %}
-  	<option value="{{activities.name}}">{{activities.name}}</option>
-   {% endfor %}
-  </select>
-</body>
-</html>
+
+{% extends 'layout.html' %}
+
+{% block title %}Your Trip{% endblock %}
+
+{% block content %}
+<div class='container clearfix'>
+  <div class='row'>
+    <div class= 'col-lg-8 col-md-8 col-sm-6' id='map-col'>
+      <p> Map goes here </p>
+    </div><div id="app" class="clearfix col-lg-4 col-md-4 col-sm-6">
+
+
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Hotels
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          {% for hotel in Hotels %}
+            <li> <a value="{{hotel.name}}">{{hotel.name}} </a></li>
+          {% endfor %}
+          </ul>
+        </div>
+
+
+      <select>
+      {% for restaurants in Restaurants %}
+        <option value="{{restaurants.name}}">{{restaurants.name}}</option>
+       {% endfor %}
+      </select>
+      <select>
+      {% for activities in Activities %}
+        <option value="{{activities.name}}">{{activities.name}}</option>
+       {% endfor %}
+      </select>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -9,12 +9,16 @@ const db = models.db;
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
+const path = require ('path')
 
 app.use(volleyball);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/stylesheets'));
+app.use('/bootstrap', express.static(path.join(__dirname,'/node_modules/bootstrap/dist')));
+app.use('/jquery',express.static(__dirname + '/node_modules/jquery/dist'));
+
 
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
@@ -26,7 +30,7 @@ app.get('/', function(req, res, next) {
     res.render('index', {Hotels:databaseArray[0], Restaurants:databaseArray[1], Activities:databaseArray[2]});
 
   }).catch(next);
-  
+
 });
 
 // add routes here
