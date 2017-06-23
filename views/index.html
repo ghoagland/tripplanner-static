@@ -6,5 +6,20 @@
 </head>
 <body>
   <h1>Welcome!</h1>
+  <select>
+  {% for hotel in Hotels %}
+  	<option value="{{hotel.name}}">{{hotel.name}}</option>
+   {% endfor %}
+  </select>
+  <select>
+  {% for restaurants in Restaurants %}
+  	<option value="{{restaurants.name}}">{{restaurants.name}}</option>
+   {% endfor %}
+  </select>
+  <select>
+  {% for activities in Activities %}
+  	<option value="{{activities.name}}">{{activities.name}}</option>
+   {% endfor %}
+  </select>
 </body>
 </html>

@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
-const db = require('./db');
+const models = require('./models');
+const Place = models.Place;
+const Hotel = models.Hotel;
+const Restaurant = models.Restaurant;
+const Activity = models.Activity;
+const db = models.db;
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
@@ -16,7 +21,12 @@ app.engine('html', nunjucks.render);
 nunjucks.configure('views', { noCache: true });
 
 app.get('/', function(req, res, next) {
-  res.render('index');
+  var promiseArray = [Hotel.findAll(), Restaurant.findAll(), Activity.findAll()];
+  Promise.all(promiseArray).then(function(databaseArray){
+    res.render('index', {Hotels:databaseArray[0], Restaurants:databaseArray[1], Activities:databaseArray[2]});
+
+  }).catch(next);
+  
 });
 
 // add routes here
@@ -32,6 +42,8 @@ app.use(function(err, req, res, next) {
   console.log(err);
   res.status(err.status).render('error', { err: err });
 });
+
+
 
 db.sync()
 .then(function() {

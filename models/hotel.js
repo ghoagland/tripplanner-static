@@ -14,7 +14,7 @@ var Hotel = {
   amenities:{
     type: Sequelize.TEXT,
     allowNull: false,
-  },
+  }
 
 
 }
